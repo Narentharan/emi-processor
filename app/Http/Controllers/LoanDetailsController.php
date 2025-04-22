@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\LoanDetail;
-use Illuminate\Http\Request;
-
+use App\Repositories\LoanRepository;
 
 class LoanDetailsController extends Controller
 {
+    protected $loanRepo;
+
+    public function __construct(LoanRepository $loanRepo)
+    {
+        $this->loanRepo = $loanRepo;
+    }
+
     public function index()
     {
-        $loans = LoanDetail::all();
+        $loans = $this->loanRepo->getAll();
         return view('loan-details.index', compact('loans'));
     }
 }
