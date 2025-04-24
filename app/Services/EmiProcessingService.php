@@ -15,7 +15,7 @@ class EmiProcessingService
         $this->loanRepo = $loanRepo;
     }
 
-    public function process()
+    public function process(): bool
     {
         // Drop existing table
         Schema::dropIfExists('emi_details');

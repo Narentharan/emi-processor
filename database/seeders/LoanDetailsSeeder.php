@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +12,9 @@ class LoanDetailsSeeder extends Seeder
      */
     public function run(): void
     {
+        // Truncate the loan_details table before seeding
+        DB::table('loan_details')->truncate();
+
         DB::table('loan_details')->insert([
             [
                 'clientid' => 1001,

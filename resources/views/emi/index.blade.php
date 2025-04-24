@@ -41,6 +41,13 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="mt-4">
+                    {{ $emiData->links() }}
+                </div>
+            </div>
+        @else
+            <div class="text-center text-gray-500 mt-8">
+                No EMI data available.
             </div>
         @endif
     </div>

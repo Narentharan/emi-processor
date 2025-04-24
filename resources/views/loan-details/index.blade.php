@@ -19,7 +19,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($loans as $loan)
+                        @forelse ($loans as $loan)
                             <tr class="border-t">
                                 <td class="px-4 py-2 border">{{ $loan->clientid }}</td>
                                 <td class="px-4 py-2 border">{{ $loan->num_of_payment }}</td>
@@ -27,9 +27,22 @@
                                 <td class="px-4 py-2 border">{{ $loan->last_payment_date }}</td>
                                 <td class="px-4 py-2 border">{{ $loan->loan_amount }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="5" class="px-4 py-4 text-center text-gray-500">
+                                    No loan data available.
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
+
+                @if ($loans->count())
+                    <div class="flex justify-center mt-4">
+                        {{ $loans->links() }}
+                    </div>
+                @endif
+
                 <div class="mt-6">
                     <a href="{{ route('emi.index') }}"
                        class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
